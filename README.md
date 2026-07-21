@@ -1,5 +1,9 @@
 # AI Service Desk
 
+# **Status:** 🚧 In Progress (Backend Engineering Training Project)
+
+
+
 A backend REST API built with **FastAPI** as part of the GoML backend development training. This project demonstrates a clean project structure, database integration using SQLAlchemy, and basic CRUD operations.
 
 ## 🚀 Tech Stack
