@@ -15,7 +15,7 @@ A backend REST API built with **FastAPI** as part of the GoML backend developmen
 - Uvicorn
 - Python 3.12
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ai-service-desk/
