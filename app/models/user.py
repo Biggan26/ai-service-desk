@@ -1,4 +1,5 @@
 #store the data in database from Schema validation
+#mynote: MODEL Define the structure for Database
 
 from sqlalchemy import Column, Integer, String
 
