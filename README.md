@@ -4,7 +4,7 @@
 
 
 What i done ?
-FastAPI Routing
+- FastAPI Routing
 - SQLAlchemy ORM
 - PostgreSQL Integration
 - Database Relationships (Foundation)
