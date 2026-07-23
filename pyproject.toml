@@ -9,6 +9,7 @@ dependencies = [
     "boto3>=1.43.54",
     "email-validator>=2.3.0",
     "fastapi>=0.139.2",
+    "locust>=2.46.1",
     "psycopg2-binary>=2.9.12",
     "pydantic-settings>=2.14.2",
     "pytest>=9.1.1",

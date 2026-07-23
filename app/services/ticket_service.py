@@ -16,7 +16,6 @@ def create_ticket(db: Session, ticket: TicketCreate):
         assigned_to_email=ticket.assigned_to_email,
     )
 
-
     db.add(db_ticket)
 
 
@@ -56,7 +55,7 @@ def update_ticket(db: Session, ticket_id: int, ticket_data: TicketUpdate):
     return ticket
 
 
-# Deletes a ticket 
+# Deletes a ticket
 def delete_ticket(db: Session, ticket_id: int):
     db_ticket = db.query(Ticket).filter(Ticket.id == ticket_id).first()
     if not db_ticket:
