@@ -8,6 +8,8 @@ from app.database.database import Base, engine
 from app.models.user import User
 from app.models.ticket import Ticket
 
+from app.api.ai import router as ai_router
+
 app = FastAPI(
     title=settings.APP_NAME,
 )
@@ -32,6 +34,9 @@ async def add_process_time_header(request: Request, call_next):
 
 app.include_router(user_router)
 app.include_router(ticket_router)
+app.include_router(ai_router)
+
+
 
 @app.get("/", tags=["Root"])
 def root():
