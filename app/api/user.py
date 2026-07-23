@@ -9,7 +9,9 @@ from app.services.user_service import (
     get_user_by_id,
 )
 
-router = APIRouter()
+router = APIRouter(
+    tags=["👤 Users"],
+)
 
 
 @router.post("/users")

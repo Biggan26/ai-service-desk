@@ -1,19 +1,25 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
+from app.schemas.ticket import TicketCreate, TicketUpdate
 
 from app.database.database import get_db
 from app.schemas.ticket import TicketCreate
+
 from app.services.ticket_service import (
     create_ticket,
     get_all_tickets,
     get_ticket_by_id,
+    update_ticket,
+    delete_ticket,
 )
 
 # Groups all ticket-related endpoints under a single router.
-router = APIRouter()
+router = APIRouter(
+    tags=["🎫 Tickets"]
+)
 
 
-# Creates a new ticket using the validated request data.
+# Creates a new ticket
 @router.post("/tickets")
 def create_new_ticket(
     ticket: TicketCreate,
@@ -22,7 +28,7 @@ def create_new_ticket(
     return create_ticket(db, ticket)
 
 
-# Returns a list of all available tickets.
+# Returns
 @router.get("/tickets")
 def read_tickets(
     db: Session = Depends(get_db)
@@ -30,10 +36,27 @@ def read_tickets(
     return get_all_tickets(db)
 
 
-# Returns a single ticket by its unique ID.
+# Returns a single ticket
 @router.get("/tickets/{ticket_id}")
 def read_ticket(
     ticket_id: int,
     db: Session = Depends(get_db)
 ):
     return get_ticket_by_id(db, ticket_id)
+
+
+@router.put("/{ticket_id}")
+def update_existing_ticket(
+    ticket_id: int,
+    ticket: TicketUpdate,
+    db: Session = Depends(get_db),
+):
+    return update_ticket(db, ticket_id, ticket)
+
+
+@router.delete("/{ticket_id}")
+def delete_existing_ticket(
+    ticket_id: int,
+    db: Session = Depends(get_db),
+):
+    return delete_ticket(db, ticket_id)

@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker, DeclarativeBase
 from app.core.config import settings
 
 
-# Creates the SQLAlchemy engine using the configured PostgreSQL connection string.
+# Creates SQLAlchemy engine
 engine = create_engine(
     settings.DATABASE_URL,
     echo=True,
