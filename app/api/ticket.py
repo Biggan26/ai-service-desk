@@ -3,7 +3,6 @@ from sqlalchemy.orm import Session
 from app.schemas.ticket import TicketCreate, TicketUpdate
 
 from app.database.database import get_db
-from app.schemas.ticket import TicketCreate
 
 from app.services.ticket_service import (
     create_ticket,
@@ -45,7 +44,7 @@ def read_ticket(
     return get_ticket_by_id(db, ticket_id)
 
 
-@router.put("/tickets{ticket_id}")
+@router.put("/tickets/{ticket_id}")
 def update_existing_ticket(
     ticket_id: int,
     ticket: TicketUpdate,
