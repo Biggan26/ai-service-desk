@@ -24,10 +24,19 @@ def test_create_ticket():
     result = create_ticket(db, ticket)
 
     assert result.title == "Bug"
+    assert result.description == "Login issue"
     assert result.priority == "High"
+    assert result.assigned_to == "Biggan"
+    assert result.assigned_to_email == "biggan@test.com"
+
     db.add.assert_called_once()
+
+    added_ticket = db.add.call_args[0][0]
+    assert added_ticket.title == "Bug"
+    assert added_ticket.priority == "High"
+
     db.commit.assert_called_once()
-    db.refresh.assert_called_once()
+    db.refresh.assert_called_once_with(result)
 
 
 def test_get_all_tickets():
@@ -84,6 +93,16 @@ def test_get_ticket_by_negative_id():
     assert result is None
 
 
+def test_get_ticket_by_large_id():
+    db = MagicMock()
+
+    db.query.return_value.filter.return_value.first.return_value = None
+
+    result = get_ticket_by_id(db, 999999999)
+
+    assert result is None
+
+
 def test_update_ticket():
     db = MagicMock()
 
@@ -103,8 +122,37 @@ def test_update_ticket():
 
     assert result == ticket
     assert ticket.title == "Updated"
+    assert ticket.description == "Updated Desc"
+    assert ticket.priority == "Low"
+    assert ticket.assigned_to == "Alex"
+    assert ticket.assigned_to_email == "alex@test.com"
+
     db.commit.assert_called_once()
-    db.refresh.assert_called_once()
+    db.refresh.assert_called_once_with(ticket)
+
+
+def test_update_ticket_empty_values():
+    db = MagicMock()
+
+    ticket = MagicMock()
+
+    db.query.return_value.filter.return_value.first.return_value = ticket
+
+    data = TicketUpdate(
+        title="",
+        description="",
+        priority="Low",
+        assigned_to="",
+        assigned_to_email="",
+    )
+
+    result = update_ticket(db, 1, data)
+
+    assert result == ticket
+    assert ticket.title == ""
+    assert ticket.description == ""
+    assert ticket.assigned_to == ""
+    assert ticket.assigned_to_email == ""
 
 
 def test_update_ticket_not_found():
@@ -123,6 +171,8 @@ def test_update_ticket_not_found():
     result = update_ticket(db, 999, data)
 
     assert result is None
+    db.commit.assert_not_called()
+    db.refresh.assert_not_called()
 
 
 def test_delete_ticket():
@@ -135,6 +185,7 @@ def test_delete_ticket():
     result = delete_ticket(db, 1)
 
     assert result == ticket
+
     db.delete.assert_called_once_with(ticket)
     db.commit.assert_called_once()
 
@@ -148,6 +199,9 @@ def test_delete_ticket_not_found():
 
     assert result is None
 
+    db.delete.assert_not_called()
+    db.commit.assert_not_called()
+
 
 def test_delete_ticket_negative_id():
     db = MagicMock()
@@ -157,3 +211,6 @@ def test_delete_ticket_negative_id():
     result = delete_ticket(db, -1)
 
     assert result is None
+
+    db.delete.assert_not_called()
+    db.commit.assert_not_called()

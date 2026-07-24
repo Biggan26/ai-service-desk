@@ -45,7 +45,7 @@ def read_ticket(
     return get_ticket_by_id(db, ticket_id)
 
 
-@router.put("/{ticket_id}")
+@router.put("/tickets{ticket_id}")
 def update_existing_ticket(
     ticket_id: int,
     ticket: TicketUpdate,
@@ -54,7 +54,7 @@ def update_existing_ticket(
     return update_ticket(db, ticket_id, ticket)
 
 
-@router.delete("/{ticket_id}")
+@router.delete("/tickets/{ticket_id}")
 def delete_existing_ticket(
     ticket_id: int,
     db: Session = Depends(get_db),
