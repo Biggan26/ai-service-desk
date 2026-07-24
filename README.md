@@ -40,21 +40,21 @@ What i done ?
 # tests coverage
 
 
-![alt text](readme_picture_proof\image-1.png)
+![alt text](readme_picture_proof/test_case.png)
 
 
 # Locust Load Test
 1. NO Failures find
-![alt text](readme_picture_proof\locust.png)
+![alt text](readme_picture_proof/locust.png)
 
 
 # Alembic Migration for Database (PostgreSQL 18)
 
-![alt text](readme_picture_proof\database_migration.png)
+![alt text](readme_picture_proof/database_migration.png)
 
 # Middleware Implementation & Request Processing Time
 
-![alt text](readme_picture_proof\middleware_processing_time_check.png)
+![alt text](readme_picture_proof/middleware_processing_time_check.png)
 
 
 # Profiling (cProfile + SnakeViz) Graph
