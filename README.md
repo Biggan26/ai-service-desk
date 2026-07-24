@@ -1,9 +1,8 @@
-# AI Service Desk
+# AI Service Desk  (Backend Engineering Training Project)
 
-# **Status:** 🚧 In Progress (Backend Engineering Training Project)
+# **Status:** 🚧 In Progress
 
-
-What i done ?
+# What i done ?
 - FastAPI Application Development
 - SQLAlchemy ORM
 - PostgreSQL Database Integration
