@@ -88,7 +88,7 @@
 -----
 
 ## Docker Container
-![alt text](readme_picture_Proof/Docker_Proof.png)
+![alt text](readme_picture_proof/Docker_Proof.png)
 
 
 ------
