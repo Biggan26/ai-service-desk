@@ -238,32 +238,48 @@ SQLAlchemy ORM         AWS Bedrock
 ```text
 AI-SERVICE-DESK
 │
-├── alembic/                  # Database migration scripts
+├── alembic/                       # Alembic migration scripts
+│   ├── versions/                  # Database migration versions
+│   ├── env.py                     # Alembic environment configuration
+│   ├── script.py.mako             # Migration template
+│   └── README                     # Alembic documentation
 │
 ├── app/
-│   ├── api/                  # API routes
-│   ├── core/                 # Application configuration
-│   ├── database/             # Database connection
-│   ├── models/               # SQLAlchemy models
-│   ├── schemas/              # Pydantic schemas
-│   ├── services/             # Business logic
-│   ├── utils/                # Helper utilities
-│   └── main.py               # FastAPI application entry point
+│   ├── api/                       # API route definitions
+│   ├── core/                      # Application configuration and settings
+│   ├── database/                  # Database session and connection
+│   ├── models/                    # SQLAlchemy ORM models
+│   ├── schemas/                   # Pydantic request/response schemas
+│   ├── services/                  # Business logic and AI services
+│   ├── utils/                     # Shared utility functions
+│   ├── __init__.py
+│   └── main.py                    # FastAPI application entry point
 │
 ├── tests/
-│   ├── api/
-│   ├── integration/
-│   ├── profile/
-│   ├── unit/
-│   └── data/
+│   ├── api/                       # API endpoint tests
+│   ├── data/                      # Test datasets
+│   ├── integration/               # Integration tests
+│   ├── profile/                   # Performance profiling tests
+│   ├── unit/                      # Unit tests
+│   ├── __init__.py
+│   └── conftest.py                # Shared pytest fixtures
 │
-├── Dockerfile
-├── docker-compose.yml
-├── alembic.ini
-├── pyproject.toml
-├── .env.example
-├── .gitignore
-└── README.md
+├── readme_picture_proof/          # Screenshots used in README
+│
+├── .coverage                      # Code coverage report
+├── .dockerignore                  # Files ignored during Docker build
+├── .env.example                   # Sample environment variables
+├── .gitignore                     # Git ignore rules
+├── .python-version                # Python version configuration
+├── alembic.ini                    # Alembic configuration
+├── docker-compose.yml             # Docker Compose configuration
+├── Dockerfile                     # Docker image definition
+├── locustfile.py                  # Load testing configuration
+├── pyproject.toml                 # Project metadata and dependencies
+├── requirements.txt               # Exported Python dependencies
+├── uv.lock                        # Locked dependency versions
+├── README.md                      # Project documentation
+└── ai_service_desk.db             # Local SQLite database (development only)
 ```
 
 ---
