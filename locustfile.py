@@ -22,11 +22,11 @@ class TicketApiUser(HttpUser):
             "/tickets",
             name="POST /tickets",
             json={
-                "title": "Load Test Ticket",
-                "description": "This ticket was created during Locust load testing.",
-                "priority": "High",
-                "assigned_to": "Load Tester",
-                "assigned_to_email": "loadtester@example.com",
+                "title": "Acer Monitor Issue",
+                "description": "HP, ASUS, Dell, Lenovo, Samsung, LG ",
+                "priority": "Medium",
+                "assigned_to": "Sanjay",
+                "assigned_to_email": "sanjay@zoho.com",
             },
         )
 

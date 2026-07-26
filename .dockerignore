@@ -1,6 +1,23 @@
-.venv
 .git
+.gitignore
+
+.venv
 __pycache__
-.env
+.pytest_cache
+.mypy_cache
 
+*.pyc
+*.pyo
+*.pyd
 
+tests
+docs
+
+profile_results.prof
+
+Dockerfile
+docker-compose.yml
+
+README.md
+
+.env.example
